@@ -67,10 +67,19 @@ a{color:inherit;text-decoration:underline;text-decoration-color:#aaa;text-underl
   width:100%;background:#f7f7f5;border-radius:5px;overflow:hidden;
   border:1px solid rgba(55,53,47,.08);position:relative;
 }
-.media-frame.image-ratio{aspect-ratio:16/10}
-.media-frame.video-ratio{aspect-ratio:16/9;background:#111}
-.media-frame img,.media-frame video{
-  width:100%;height:100%;display:block;object-fit:cover;
+/* 图片区域 */
+.media-frame.image-ratio{
+  width:100%;
+  aspect-ratio:auto;
+  background:#fff;
+}
+
+/* 图片保持原始比例 */
+.media-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
 }
 .slot-caption{font-size:12px;color:#9b9a97;text-align:center;margin-top:5px}
 .slot-control{
