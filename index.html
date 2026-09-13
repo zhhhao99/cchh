@@ -308,19 +308,15 @@ input[type=file]{display:none}
   </section>
 
 <script>
-const editBtn = document.getElementById('editBtn');
+
 const finishBtn = document.getElementById('finishBtn');
 const editable = [...document.querySelectorAll('.editable')];
 
 function setEditing(on){
-  document.body.classList.toggle('editing',on);
-  editBtn.style.display = on ? 'none' : '';
   finishBtn.style.display = on ? '' : 'none';
   editable.forEach(el => el.contentEditable = on ? 'true' : 'false');
 }
-editBtn.onclick=()=>setEditing(true);
 finishBtn.onclick=()=>setEditing(false);
-
 /* 保存文字到本机浏览器 */
 editable.forEach(el=>{
   const k='flowus_text_'+el.dataset.key;
