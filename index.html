@@ -208,6 +208,32 @@ input[type=file]{display:none}
   .topbar{padding:0 8px}
   .brand{max-width:45vw}
 }
+.media-slot[data-slot="video1"]{
+  margin:24px auto 34px;
+}
+
+.media-slot[data-slot="video1"].portrait{
+  max-width:360px;
+}
+
+.media-slot[data-slot="video1"].landscape{
+  max-width:640px;
+}
+
+.video-ratio{
+  width:100%;
+  background:#000;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+
+.media-frame.video-ratio video{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
 </style>
 </head>
 <body>
@@ -406,7 +432,24 @@ document.getElementById('file-image1').addEventListener('change',e=>{
 document.getElementById('file-video1').addEventListener('change',e=>{
   if(e.target.files[0]) saveSlot('video1',e.target.files[0],'video');
 });
+const video = document.getElementById('video1');
+const videoSlot = document.querySelector(
+  '.media-slot[data-slot="video1"]'
+);
 
+video.addEventListener('loadedmetadata', function(){
+
+  videoSlot.classList.remove('portrait', 'landscape');
+
+  if(video.videoHeight > video.videoWidth){
+    // 竖屏
+    videoSlot.classList.add('portrait');
+  }else{
+    // 横屏
+    videoSlot.classList.add('landscape');
+  }
+
+});
 setEditing(false);
 
 </script>
